@@ -3,6 +3,7 @@ package br.com.fiap.livenow.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -71,12 +72,11 @@ fun HomeScreen() {
                 fontSize = 24.sp
             )
         }
-        Spacer(modifier = Modifier.height(8.dp))
         PostCard(
             imageUrl = R.drawable.show2,
             postText = "Ed Sheeran é incrível, provavelmente foi o melhor show da miha vida..."
         )
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(12.dp))
         Row(
             modifier = Modifier
                 .align(Alignment.Start)
@@ -107,13 +107,70 @@ fun HomeScreen() {
             postText = "Adorei o show, foi uma experiência surreal!! O artista, os efeitos visuais, conexão emocional..."
         )
         Spacer(modifier = Modifier.height(32.dp))
-
-        PostCard(
-            imageUrl = R.drawable.show1,
-            postText = "Adorei o show, foi uma experiência surreal!! O artista, os efeitos visuais, conexão emocional..."
-        )
     }
 }
+
+//@OptIn(ExperimentalCoilApi::class)
+//@Composable
+//fun PostCard(
+//    imageUrl: Int,
+//    postText: String,
+//    modifier: Modifier = Modifier
+//) {
+//    Card(
+//        modifier = modifier
+//            .fillMaxWidth()
+//            .padding(horizontal = 16.dp)
+//            ,
+//        shape = RoundedCornerShape(0.dp),
+//    ) {
+//        Column(modifier = Modifier
+//            .padding(16.dp)
+//            .background(Color(0xFF1B1B1B)),
+//            ) {
+//            val painter = rememberImagePainter(imageUrl, builder = {
+//                placeholder(android.R.drawable.ic_menu_gallery)
+//                error(android.R.drawable.ic_menu_close_clear_cancel)
+//            })
+//            Image(
+//                painter = painter,
+//                contentDescription = null,
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .height(200.dp),
+//                contentScale = ContentScale.Crop
+//            )
+//
+//            Spacer(modifier = Modifier.height(8.dp))
+//
+//            Row(verticalAlignment = Alignment.CenterVertically) {
+//                Icon(
+//                    imageVector = Icons.Default.Favorite,
+//                    contentDescription = "Favorite",
+//                    modifier = Modifier
+//                        .size(24.dp),
+//                    tint = Color(0xFF882DA8)
+//
+//                )
+//                Spacer(modifier = Modifier.width(16.dp))
+//                Icon(
+//                    imageVector = Icons.Default.Share,
+//                    contentDescription = "Comment",
+//                    modifier = Modifier.size(24.dp),
+//                    tint = Color.White
+//                )
+//            }
+//
+//            Spacer(modifier = Modifier.height(8.dp))
+//
+//            Text(
+//                text = postText,
+//                modifier = Modifier.fillMaxWidth(),
+//                color = Color.White,
+//            )
+//        }
+//    }
+//}
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
@@ -122,18 +179,15 @@ fun PostCard(
     postText: String,
     modifier: Modifier = Modifier
 ) {
-    Card(
+    Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp)
-            .background(Color(0xFF1B1B1B))
-            .border(width = 0.dp, color = Color.Transparent),
-        shape = RoundedCornerShape(0.dp),
+            .padding(horizontal = 8.dp)
     ) {
         Column(modifier = Modifier
-            .padding(16.dp)
+            .padding(8.dp)
             .background(Color(0xFF1B1B1B)),
-            ) {
+        ) {
             val painter = rememberImagePainter(imageUrl, builder = {
                 placeholder(android.R.drawable.ic_menu_gallery)
                 error(android.R.drawable.ic_menu_close_clear_cancel)
@@ -171,10 +225,14 @@ fun PostCard(
 
             Text(
                 text = postText,
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.CenterHorizontally),
                 color = Color.White,
             )
         }
     }
 }
+
+
 
